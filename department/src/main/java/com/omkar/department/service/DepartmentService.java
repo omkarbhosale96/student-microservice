@@ -5,6 +5,8 @@ import com.omkar.department.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DepartmentService {
 
@@ -17,5 +19,9 @@ public class DepartmentService {
 
     public Department getDepartment(Long departmentId) {
         return repository.findById(departmentId).orElse(new Department());
+    }
+
+    public List<Department> getAllDepartments() {
+        return repository.findAll();
     }
 }

@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -26,5 +28,10 @@ public class StudentController {
     public StudentDepartmentVO getStudent(@PathVariable("id") Long studentId){
         LOGGER.info("getStudent :{}",studentId);
         return service.getStudent(studentId);
+    }
+
+    @GetMapping("/department/{departmentId}")
+    public List<Student> findByDepartment(@PathVariable("departmentId") Long departmentId){
+        return service.findByDepartment(departmentId);
     }
 }

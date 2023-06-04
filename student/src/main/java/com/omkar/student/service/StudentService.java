@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 public class StudentService {
     @Autowired
@@ -26,5 +28,9 @@ public class StudentService {
         studentDepartmentVO.setStudent(student);
         studentDepartmentVO.setDepartment(department);
         return studentDepartmentVO;
+    }
+
+    public List<Student> findByDepartment(Long departmentId) {
+        return repository.findByDepartmentId(departmentId);
     }
 }
